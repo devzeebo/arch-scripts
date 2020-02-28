@@ -1,5 +1,5 @@
 #!/bin/bash
-export ARCH_INSTALL_SCRIPTS_VERSION=0.0.21
+export ARCH_INSTALL_SCRIPTS_VERSION=0.0.22
 
 get_script_from() {
     echo "Downloading $2..."
