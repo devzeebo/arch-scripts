@@ -1,13 +1,13 @@
 #!/bin/bash
-export ARCH_INSTALL_SCRIPTS_VERSION=0.0.11
+export ARCH_INSTALL_SCRIPTS_VERSION=0.0.12
 
 get_script_from() {
-    curl $1 --output $2
+    curl "https://cdn.jsdelivr.net/gh/$1" --output $2
     chmod +x $2
 }
 
 get_script() {
-    get_script_from "https://cdn.jsdelivr.net/gh/devzeebo/arch-scripts@${ARCH_INSTALL_SCRIPTS_VERSION}/install/$1" $1
+    get_script_from "devzeebo/arch-scripts@${ARCH_INSTALL_SCRIPTS_VERSION}/install/$1" $1
 }
 
 run_script() {
