@@ -1,5 +1,5 @@
 #!/bin/bash
-export ARCH_INSTALL_SCRIPTS_VERSION=0.0.13
+export ARCH_INSTALL_SCRIPTS_VERSION=0.0.14
 
 get_script_from() {
     echo "Downloading $2..."
@@ -38,9 +38,11 @@ else
     mkdir -p setup && cd setup
 
     get_script set-timezone.sh
-    get_script_from 'happy-hacking-linux/timezone-selector@master/timezone-selector.sh' 'timezone-selector.sh'
+    get_script_from 'happy-hacking-linux/timezone-selector@master/timezone-selector.sh' 'timezone-selector'
 
-    source timezone-selector.sh
+    chmod -x timezone-selector
+
+    source timezone-selector
     tzSelectionMenu
     ./set-timezone.sh $selected
 fi
