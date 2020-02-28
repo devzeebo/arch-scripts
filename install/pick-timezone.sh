@@ -1,9 +1,7 @@
 #!/bin/bash
 
 pick_timezone() {
-    echo 'Enter a timezone: (US/Central): '
-
-    read timezone
+    read -e -p 'Enter a timezone: (US/Central): ' timezone
 
     if [[ -z $timezone ]]; then
         timezone='US/Central'
