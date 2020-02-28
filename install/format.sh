@@ -12,7 +12,7 @@ prompt_part() {
     echo "Select $2 partition:"
 
     mapfile -t local options < <( fdisk -l | sed -n 's|^\([/a-z0-9]\+\).*|\1|p' )
-    select local opt in "${options[@]}"; do
+    select opt in "${options[@]}"; do
         case $opt in
             /dev*)
                 eval $__resultVar="'$opt'"
@@ -26,6 +26,7 @@ prompt_part() {
 }
 
 echo
+echo $opt
 
 prompt_part ext4_part 'ext4'
 
