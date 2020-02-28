@@ -3,8 +3,8 @@
 prompt_part() {
     local __resultVar=$1
 
-    echo 
-    echo 
+    echo
+    echo
     echo 'Available partitions:'
     echo
 
