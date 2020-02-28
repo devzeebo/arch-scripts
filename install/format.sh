@@ -12,7 +12,7 @@ prompt_part() {
 
     PS3="Select $2 partition: "
     readarray -t local options < <( fdisk -l | sed -n 's|^\([/a-z0-9]\+\).*|\1|p' )
-    select opt in "${options[@]} Skip"; do
+    select opt in "${options[@]}" "Skip"; do
         case $opt in
             /dev*)
                 eval $__resultVar="'$opt'"
