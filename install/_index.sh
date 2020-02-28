@@ -1,8 +1,10 @@
 #!/bin/bash
-export ARCH_INSTALL_SCRIPTS_VERSION=0.0.12
+export ARCH_INSTALL_SCRIPTS_VERSION=0.0.13
 
 get_script_from() {
-    curl "https://cdn.jsdelivr.net/gh/$1" --output $2
+    echo "Downloading $2..."
+
+    curl -s "https://cdn.jsdelivr.net/gh/$1" --output $2
     chmod +x $2
 }
 
@@ -33,7 +35,7 @@ if [[ $1 != 'continue' ]]; then
     cp ./install.sh /mnt
     arch-chroot /mnt ./install.sh 'continue'
 else
-    mkdir setup && cd setup
+    mkdir -p setup && cd setup
 
     get_script set-timezone.sh
     get_script_from 'happy-hacking-linux/timezone-selector@master/timezone-selector.sh' 'timezone-selector.sh'
