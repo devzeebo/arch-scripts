@@ -1,5 +1,5 @@
 #!/bin/bash
-export ARCH_INSTALL_SCRIPTS_VERSION=0.0.14
+export ARCH_INSTALL_SCRIPTS_VERSION=0.0.15
 
 get_script_from() {
     echo "Downloading $2..."
@@ -37,12 +37,9 @@ if [[ $1 != 'continue' ]]; then
 else
     mkdir -p setup && cd setup
 
-    get_script set-timezone.sh
-    get_script_from 'happy-hacking-linux/timezone-selector@master/timezone-selector.sh' 'timezone-selector'
+    get_script pick-timezone.sh
+    get_script localization.sh
 
-    chmod -x timezone-selector
-
-    source timezone-selector
-    tzSelectionMenu
-    ./set-timezone.sh $selected
+    run_script pick-timezone.sh 'Pick Timezone'
+    run_script localization.sh 'Set Locale'
 fi
