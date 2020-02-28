@@ -1,9 +1,13 @@
 #!/bin/bash
-export ARCH_INSTALL_SCRIPTS_VERSION=0.0.9
+export ARCH_INSTALL_SCRIPTS_VERSION=0.0.11
+
+get_script_from() {
+    curl $1 --output $2
+    chmod +x $2
+}
 
 get_script() {
-    curl "https://cdn.jsdelivr.net/gh/devzeebo/arch-scripts@${ARCH_INSTALL_SCRIPTS_VERSION}/install/$1" --output $1
-    chmod +x $1
+    get_script_from "https://cdn.jsdelivr.net/gh/devzeebo/arch-scripts@${ARCH_INSTALL_SCRIPTS_VERSION}/install/$1" $1
 }
 
 run_script() {
@@ -31,7 +35,10 @@ if [[ $1 != 'continue' ]]; then
 else
     mkdir setup && cd setup
 
-    get_script pick-timezone.sh
+    get_script set-timezone.sh
+    get_script_from 'happy-hacking-linux/timezone-selector@master/timezone-selector.sh' 'timezone-selector.sh'
 
-    run_script ./pick-timezone.sh 'Select Timezone'
+    source timezone-selector.sh
+    tzSelectionMenu
+    ./set-timezone.sh $selected
 fi
