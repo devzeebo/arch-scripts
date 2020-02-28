@@ -1,5 +1,5 @@
 #!/bin/bash
-export ARCH_INSTALL_SCRIPTS_VERSION=0.0.15
+export ARCH_INSTALL_SCRIPTS_VERSION=0.0.16
 
 get_script_from() {
     echo "Downloading $2..."
@@ -13,14 +13,16 @@ get_script() {
 }
 
 run_script() {
-    echo "Run $2? [yN]"
 
     local response
 
-    read $response
+    read -p "Run $2? [yN]" $response
 
-    if [[ $response == "y" ]]; then
+    if [[ "$response" == "y" ]]; then
+        echo "Running $2"
         $($1)
+    else
+        echo "Skipping $2"
     fi
 }
 
