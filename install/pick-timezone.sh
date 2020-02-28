@@ -1,3 +1,4 @@
+#!/bin/bash
 
 pick_timezone() {
     echo 'Enter a timezone: (US/Central): '
