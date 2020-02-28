@@ -40,7 +40,7 @@ prompt_part ext4_part 'ext4'
 if [[ $ext4_part != "Skip" ]]; then
     echo "Formatting ext4 partition: $ext4_part"
 
-    umount -q $ext4_part
+    umount -lq $ext4_part
     mkfs.ext4 $ext4_part
 
     echo "Done formatting $ext4_part"
