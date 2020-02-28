@@ -21,7 +21,7 @@ prompt_part() {
                 eval $__resultVar="'$opt'"
                 break
                 ;;
-            Skip)
+            Skip*)
                 eval $__resultVar='Skip'
                 break
                 ;;
