@@ -1,5 +1,5 @@
 #!/bin/bash
-export ARCH_INSTALL_SCRIPTS_VERSION=0.0.5
+export ARCH_INSTALL_SCRIPTS_VERSION=0.0.6
 
 get_script() {
     curl "https://cdn.jsdelivr.net/gh/devzeebo/arch-scripts@${ARCH_INSTALL_SCRIPTS_VERSION}/install/$1" --output $1
@@ -26,7 +26,7 @@ if [[ $1 != 'continue' ]]; then
     run_script ./format.sh 'Format'
     run_script ./install-arch.sh 'Install Arch'
 
-    arch-chroot /mnt ./_index.sh 'continue'
+    arch-chroot /mnt ./install.sh 'continue'
 else
     get_script pick-timezone.sh
 
