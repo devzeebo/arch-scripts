@@ -3,7 +3,8 @@
 prompt_part() {
     local __resultVar=$1
 
-    echo '\n\n'
+    echo 
+    echo 
     echo 'Available partitions:'
     echo
 
@@ -11,7 +12,7 @@ prompt_part() {
 
     echo "Select $2 partition:"
 
-    mapfile -t local options < <( fdisk -l | sed -n 's|^\([/a-z0-9]\+\).*|\1|p' )
+    readarray -t local options < <( fdisk -l | sed -n 's|^\([/a-z0-9]\+\).*|\1|p' )
     select opt in "${options[@]}"; do
         case $opt in
             /dev*)
