@@ -31,11 +31,9 @@ prompt_part() {
         esac
     done
 
+    echo
     unset options
 }
-
-echo
-echo $opt
 
 prompt_part ext4_part 'ext4'
 
@@ -46,6 +44,8 @@ if [[ $ext4_part != "Skip" ]]; then
     mkfs.ext4 $ext4_part
 
     echo "Done formatting $ext4_part"
+
+    mount $ext4_part /mnt
 else
     echo 'Skipping formatting ext4 partition'
 fi
