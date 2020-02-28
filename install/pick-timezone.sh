@@ -6,6 +6,6 @@ if [[ -z $timezone ]]; then
     $timezone='US/Central'
 fi
 
-ln -sf "/usr/share/zoneinfo/$1" /etc/localtime
+ln -sf "/usr/share/zoneinfo/$timezone" /etc/localtime
 
 hwclock --systohc
