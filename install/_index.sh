@@ -7,6 +7,11 @@ get_script() {
 
 get_script format.sh
 get_script install-arch.sh
+get_script pick-timezone.sh
 
 ./format.sh
 ./install-arch.sh
+
+arch-chroot /mnt
+
+./pick-timezone.sh
