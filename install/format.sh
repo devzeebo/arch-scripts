@@ -11,8 +11,11 @@ prompt_part() {
     fdisk -l | grep '^/dev'
 
     PS3="Select $2 partition: "
-    readarray -t local options < <( fdisk -l | sed -n 's|^\([/a-z0-9]\+\).*|\1|p' )
-    select opt in "${options[@]}" "Skip"; do
+    readarray -t options < <( fdisk -l | sed -n 's|^\([/a-z0-9]\+\).*|\1|p' )
+
+    echo
+
+    select opt in "${options[@]}" "Skip picking $2 partition"; do
         case $opt in
             /dev*)
                 eval $__resultVar="'$opt'"
@@ -27,6 +30,8 @@ prompt_part() {
                 ;;
         esac
     done
+
+    unset options
 }
 
 echo
