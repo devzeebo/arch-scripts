@@ -1,11 +1,11 @@
 #!/bin/bash
-
-read -p 'Enter locale: (en_us.UTF-8)' locale
+read -p 'Enter locale: (en_US.UTF-8)' locale
 
 if [[ -z $locale ]]; then
-    locale='en_us.UTF-8'
+    locale='en_US.UTF-8'
 fi
 
-sed -i "s|^#\($locale.*\)|\1|g" /etc/locale.gen
+echo "s|^#\($locale.*\)$|\1|"
+sed -i "s|^#\($locale.*\)$|\1|" /etc/locale.gen
 
 echo "LANG=$locale" > /etc/locale.conf
